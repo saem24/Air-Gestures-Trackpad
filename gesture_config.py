@@ -1,6 +1,6 @@
 import cv2
-import mediapipe as mp
-import math
+from mediapipe import solutions
+from math import sqrt
 import pyautogui
 import time
 
@@ -17,9 +17,9 @@ framerate = 30
 delay = 1 / framerate
 screen_width, screen_height = pyautogui.size()
 
-mp_drawing = mp.solutions.drawing_utils
-mp_drawing_styles = mp.solutions.drawing_styles
-mp_hands = mp.solutions.hands
+mp_drawing = solutions.drawing_utils
+mp_drawing_styles = solutions.drawing_styles
+mp_hands = solutions.hands
 
 cap = cv2.VideoCapture(0)
 
@@ -67,14 +67,14 @@ with mp_hands.Hands(model_complexity=0, min_detection_confidence=0.5, min_tracki
             pinky_base = hand_landmarks.landmark[17].x, hand_landmarks.landmark[17].y
 
             # Calculate the distances between the fingertips and palm
-            thumb_dist = math.sqrt(pow(palm_pos[0] - thumb_pos[0], 2) + pow(palm_pos[1] - thumb_pos[1], 2))
-            index_dist = math.sqrt(pow(palm_pos[0] - index_pos[0], 2) + pow(palm_pos[1] - index_pos[1], 2))
-            middle_dist = math.sqrt(pow(palm_pos[0] - middle_pos[0], 2) + pow(palm_pos[1] - middle_pos[1], 2))
-            ring_dist = math.sqrt(pow(palm_pos[0] - ring_pos[0], 2) + pow(palm_pos[1] - ring_pos[1], 2))
-            pinky_dist = math.sqrt(pow(palm_pos[0] - pinky_pos[0], 2) + pow(palm_pos[1] - pinky_pos[1], 2))
+            thumb_dist = sqrt(pow(palm_pos[0] - thumb_pos[0], 2) + pow(palm_pos[1] - thumb_pos[1], 2))
+            index_dist = sqrt(pow(palm_pos[0] - index_pos[0], 2) + pow(palm_pos[1] - index_pos[1], 2))
+            middle_dist = sqrt(pow(palm_pos[0] - middle_pos[0], 2) + pow(palm_pos[1] - middle_pos[1], 2))
+            ring_dist = sqrt(pow(palm_pos[0] - ring_pos[0], 2) + pow(palm_pos[1] - ring_pos[1], 2))
+            pinky_dist = sqrt(pow(palm_pos[0] - pinky_pos[0], 2) + pow(palm_pos[1] - pinky_pos[1], 2))
 
             # Calculate distance between index base and thumb tip
-            index_thumb_base_dist = math.sqrt(pow(index_base[0] - thumb_pos[0], 2) + pow(index_base[1] - thumb_pos[1], 2))
+            index_thumb_base_dist = sqrt(pow(index_base[0] - thumb_pos[0], 2) + pow(index_base[1] - thumb_pos[1], 2))
 
             previous_pose = current_pose
 
