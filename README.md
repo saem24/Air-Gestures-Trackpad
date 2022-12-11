@@ -2,7 +2,7 @@
 
 I often read or watch content on my laptop while sitting more than an arm's length away. Reaching over everytime I need to scroll or move screens is a hassle. Macbooks have a feature that uses face movements to control mouse but I would rather avoid neck pain. Thus, this project was born to solve that problem. Coded purely in Python, it uses opencv for camera control, mediapipe for hand tracking, math to create conditions and pyautogui to send keyboard and mouse events.
 
-The current set of gestures imitate my most used gestures on my Macbook's trackpad but new gestures can be added too. I am open to suggestions.
+I currently use it to switch spaces, move active window between desktops, scroll vertically and horizontally and control the cursor. The left / right / up / down detection zone is dynamic and gets set at the first instance of a pose change. The current set of gestures imitate my most used gestures on my Macbook's trackpad but new gestures can be added too. I am open to suggestions.
 
 ## Gif demos
 
